@@ -1,0 +1,57 @@
+<template>
+    <lightning-card title="Products" icon-name="standard:product">
+        <div class="slds-m-top_x-small">
+            <div class="slds-grid slds-wrap slds-gutters">
+                <div class="slds-col slds-size_4-of-12">
+                    <div class="slds-p-around_small">
+                        <lightning-combobox
+                        name="filterCategory"
+                        label="Field"
+                        placeholder="Filter results"
+                        options={options}
+                        onchange={handleChange}>
+                        </lightning-combobox>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_4-of-12">
+                    <div class="slds-p-around_small">
+                        <lightning-input 
+                        type="text" 
+                        name="filterInput" 
+                        label="Filter Text"
+                        onchange={handleChange}>
+                        </lightning-input>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-12">
+                    <div class="slds-p-top_xx-small slds-m-top_x-large">
+                        <lightning-button label="Refresh" title="Refresh List" onclick={refreshList}></lightning-button>
+                    </div>        
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <div class="slds-p-around_small">
+                        <lightning-input 
+                        data-id="total" 
+                        type="number" 
+                        name="total"
+                        label="Total" 
+                        value={total}
+                        minimum-fraction-digits="2"
+                        maximum-fraction-digits="2"
+                        disabled>
+                    </lightning-input>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+        <div class="slds-p-around_small">
+            <c-custom-data-table
+            key-field="id"
+            data={data}
+            columns={columns}
+            hide-checkbox-column="true">
+            </c-custom-data-table>
+        </div>    
+    </lightning-card> 
+</template>
